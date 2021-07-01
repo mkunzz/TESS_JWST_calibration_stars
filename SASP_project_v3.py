@@ -9,20 +9,10 @@ Created on Wed Jun 30 12:40:51 2021
 import csv
 import lightkurve as lk
 import numpy as np
+#import matplotlib.pyplot as plt
+#import scipy.signal as signal
+#-----------------------------------------------------------------------------
 
-#-----------------------------------------------------------------------------
-# define the true objective function
-def objective(x, a, b, c, d, e, f):
-    return (a * x) + (b * x**2) + (c * x**3) + (d * x**4) + (e * x**5) + f
-#-----------------------------------------------------------------------------
-with open('2mindata.csv', 'w', newline='') as csvfile:
-    spamwriter = csv.writer(csvfile, delimiter=',')
-    i = 0
-    while i < 10:
-        spamwriter.writerow([i] * 5 + ['Baked Beans'])
-        spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
-        
-        i+=1
 #-----------------------------------------------------------------------------
 # Search for JWST Calibration stars using
 # lightkurve for Tess 2 min data using TIC numbers
@@ -38,21 +28,104 @@ while i < len(candles_with_TIC):
         candles_with_2min.append(candles_with_TIC[i])
     i+=1
 #-----------------------------------------------------------------------------
-ab = 0
-while ab < len(candles_with_2min):
-    
-    #print('Loop number {}'.format(ab+1))
-    #print('out of {}'.format(len(candles_with_2min)))
-    
-    lc = lk.search_lightcurve(candles_with_2min[ab], author='SPOC', exptime=120).download_all()
-  
-    #-----------------------------------------------------------------------------
-    n=0
-    while n < len(lc):
+variables = []
+with open('2mindata.csv', 'w', newline='') as csvfile:
+    spamwriter = csv.writer(csvfile, delimiter=',', dialect='excel')
+    spamwriter.writerow(['star', 'sector', 'std of lc', 'best period [days] [range 0-1 days]', 'max amplitude [e- s-] [range 0-1 days]', 'average amplitude [range 0-1 days]', 'best period [days] [range .9-5 days]', 'max amplitude [e- s-] [range .9-5 days]', 'average amplitude [range .9-5 days]', 'mean noise level [sigma_amp]'])
+    ab = 0
+    while ab < len(candles_with_2min):
         
-        flat_lc = lc[n].flatten(window_length=1501).remove_outliers().remove_nans()
-        flat_lc.periodogram()
-        n+=1
+        lc = lk.search_lightcurve(candles_with_2min[ab], author='SPOC', exptime=120).download_all()
     
-    ab+=1
+        n=0
+        while n < len(lc):
+            
+            flat_lc = lc[n].flatten(window_length=1501).remove_outliers().remove_nans()
+            # lightkurve's periodogram
+            # periodogram 1 from 0-1 days
+            # periodogram 2 from .9-5 days
+            pgram = flat_lc.to_periodogram(method='lombscargle', normalization='amplitude', maximum_period=1, oversample_factor = 10)  #freq_unit='microhertz'
+            pgram2 = flat_lc.to_periodogram(method='lombscargle', normalization='amplitude', minimum_period=.9, maximum_period=5, oversample_factor = 10)  #freq_unit='microhertz'
+            
+            N = len(flat_lc.time.value)
+            sigma_rms = np.std(flat_lc.flux.value)
+            # mean noise level in amplitude spectrum
+            sigma_amp = np.sqrt(np.pi/N)*sigma_rms
+            '''
+            # plotting periodograms for 0-1 days and 1-5 days with avg noise level in blue
+            pgram.plot()
+            plt.hlines(sigma_amp, 0, 1)
+            plt.ylabel('Amplitude')
+            plt.show()
+            plt.close()
+            
+            pgram2.plot()
+            plt.hlines(sigma_amp, .9, 5)
+            plt.ylabel('Amplitude')
+            plt.show()
+            plt.close()
+            '''
+            a = candles_with_2min[ab]
+            b = flat_lc.sector
+            c = np.std(flat_lc.flux.value)
+            d = pgram.period_at_max_power.value
+            e = pgram.max_power.value
+            f = np.mean(pgram.power.value)
+            g = pgram2.period_at_max_power.value
+            h = pgram2.max_power.value
+            i = np.mean(pgram2.power.value)
+            j = sigma_amp
+            
+            spamwriter.writerow([a] + [b] + [c] + [d] + [e] + [f] + [g] + [h] + [i] + [j])
+            
+            if e > 3*j:
+                variables.append(a)
+                #print('star ' + a + ', sector ' + str(b) + ' range 0-1 days, detected variable: max > 3 sigma')
+            else:
+                pass
+            if h > 3*j:
+                variables.append(a)
+                #print('star ' + a + ', sector ' + str(b) + ' range 1-5 days, detected variable: max > 3 sigma')
+            else:
+                pass
+            
+            n+=1
+        
+        ab+=1
+
+variables2 = []
+for star in variables:
+    if star not in variables2:
+        variables2.append(star)
+print(len(variables2))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
