@@ -1,5 +1,5 @@
 # TESS_JWST_calibration_stars
-Using TESS to analyze the variability of the JWST calibration stars.  
+Using TESS to analyze the variability of the JWST candidate calibration stars.  
 
 # All of the Functions to analyze JWST Calibration Stars.
 
