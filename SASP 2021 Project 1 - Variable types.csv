@@ -1,0 +1,109 @@
+Variable Types,,,,,
+name,cause,characteristics,period,amplitude,examples
+Classical Cepheids / delta cephei,"Intrinsic, pulsation","Population 1 stars (young, massive, luminous)
+
+Yellow supergiants",Days to months,,
+Type 2 Cepheids / W virginis,"Intrinsic, pulsation","Population 2 (older)
+
+Somewhat Lower metallicity
+
+Lower mass 
+
+Somewhat Lower luminosity",Days to months,,
+RR Lyrae,"Intrinsic, pulsation","Less luminous than cepheids
+
+Older pop. 2
+
+Lower mass than type 2 cepheids
+
+Common in globular clusters
+
+A-type stars",Several hours to a day or more,.2-2 mag,
+Delta Scuti / Dwarf Cepheids,"Intrinsic, pulsation","Similar to cepheids but much fainter 
+
+Spectral type between A0 and F5",.01 - .2 days,.003 - .9 mag,
+SX Phoenicis,"Intrinsic, pulsation","Similar to delta scutis
+
+Spectral type between A2 and F5
+
+Mainly in globular cluster",1-2 hrs,.7 mag,
+Rapidly oscillating Ap,"Intrinsic, pulsation","Spectral type A or F0
+
+Sub-class of delta scuti
+
+Main sequence",Few minutes,Few thousandths of a mag,
+Long period variables,"Intrinsic, pulsation",Cool evolved stars,Weeks to several years,,
+Mira,"Intrinsic, pulsation",AGB red giants,Many months,2.5-11 mag,Mira or o Cet
+Semiregular variables,"Intrinsic, pulsation",Red giants or supergiants,,,betelguese
+Slow irregular,"Intrinsic, pulsation",Red giants or supergiants,,,
+Long secondary period,Pulstations or binarity or rotation,Red giants or supergiants,Several hundred to several thousand days,Several mags or smaller,
+Beta Cephei,"Intrinsic, pulsation",Multiple pulsation periods,.1 - .6 days,.01 - .3 mag,
+"Slowly pulsating B-type
+(SPB)","Intrinsic, pulsation","Hot main sequence stars
+
+Less luminous than Beta Cephei",Longer periods than Beta Cephei,Larger amp than Beta Cephei,
+Very rapidly pulsating hot (subdwarf B),"Intrinsic, pulsation",P-mode pulsators,Few mins,Few hundredths of a mag,V361 Hydrae
+PV Telescopii,"Intrinsic, pulsation",Bp supergiants,.1-1 day,.1 mag,
+RV Tauri,"Intrinsic, pulsation","Yellow supergiants (or rather low mass post-AGB stars at most luminous stage of their lives)
+
+Spectral type F or G at max light or K or M at min brightness
+
+Near instability strip
+
+Cooler than type 1 Cepheids
+
+More luminous than type 2 cepheids",30-100 days,3-4 mag,
+Alpha Cygni,"Intrinsic,
+Pulsation (non-radial)",supergiants,Days to weeks,0.1,
+Gamma Doradus,"Intrinsic,
+Pulsation (non-radial)","Main sequence
+
+Spectral type F to late A",Around 1 day,0.1,
+Pulsating White Dwarfs,"Intrinsic,
+Pulsation (non-radial)",,Hundreds to thousands of seconds,.001 to .2,"DAV / ZZ Ceti;
+DBV / V777 Her;
+GW Vir (DOV or PNNV)"
+solar-like,"Intrinsic,
+pulsation",Driven by convection in outer layers,5 mins,Very low amp,
+BLAP,"Intrinsic,
+pulsation",,20-40 mins,.2-.4,
+Eruptive stars,"Intrinsic,
+Material loss or accretion,
+intrinsic","Protostars
+
+Herbig Ae/Be
+
+Orion variables
+
+FU Orionis
+
+Giants and supergiants
+
+Luminous blue
+
+Yellow hypergiants
+
+R Coronae Borealis
+
+Wolf-Rayet
+
+Gamma Cassiopeiae
+
+Flare stars
+
+RS Canum Venaticorum",,,
+Cataclysmic or explosive stars,intrinsic,"Supernovae
+
+Luminous red nova
+
+Novae
+
+Dwarf novae
+
+DQ Herculis
+
+AM Herculis
+
+Z Andromedae
+
+AM CVn",,,
